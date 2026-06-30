@@ -1,0 +1,203 @@
+/* 
+  *http://meyerweb.com/eric/tools/css/reset/ 
+  *v2.0 | 20110126
+  *License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 
+  *main code
+*/
+
+body {
+	color: #000000;
+	font-family: sans-serif;
+	text-decoration: none;
+	padding: 50px;
+}
+h1, h2 {
+	text-align: center;
+}
+a {
+	text-decoration: none;
+	color: #000000;
+}
+h1 {
+	margin: 50px;
+	font-size: 50px;
+}
+h2 {
+	color: gray;
+	font-size: 25px;
+	margin: 0 0 70px 0;
+}
+ul {
+	margin: 25px;
+	text-align: center;
+	font-size: 25px;
+}
+footer {
+	margin: 50px;
+	text-align: center;
+	color: gray;
+}
+li {
+	margin: 25px;
+	display: inline;
+}
+h3 {
+	margin: 25px;
+	text-align: center;
+	font-size: 25px;
+}
+p {
+	text-align: center;
+	margin: 15px;
+	margin: 0 350px;
+}
+nav {
+	margin: 50px;
+}
+button {
+	margin: 15px;
+	padding: 10px;
+	font-size: 25px;
+	background-color: white;
+	border: 3px solid black;
+	cursor: pointer;
+	border-radius: 10px;
+	color: black;
+}
+button:hover {
+	cursor: pointer;
+	background-color: black;
+	color: white;
+}
+/* Animation that rotates the cover */
+@keyframes rotate-cover {
+  0% {
+    transform: translateX(-100%) rotateY(-45deg);
+  }
+  35% {
+    transform: translateX(0) rotateY(-45deg);
+  }
+  50% {
+    transform: rotateY(0deg) translateZ(1em) scale(1.5);
+  }
+  65% {
+    transform: translateX(0) rotateY(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotateY(45deg);
+  }
+}
+
+/* Animation that adjusts z-index */
+@keyframes adjust-z-index {
+  0% { z-index: 1; }
+  50% { z-index: 100; /* When at the center, be on top */ }
+  100% { z-index: 1; }
+}
+
+/* Container setup */
+.cards-wrapper {
+  perspective: 40em;
+}
+.cards {
+  transform-style: preserve-3d;
+  list-style: none;
+  white-space: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+/*
+ * BRAMUS VAN DAMME'S iPOD CAROUSEL
+ */
+/* List item setup */
+.cards li {
+  transform-style: preserve-3d;
+  display: inline-block;
+  width: var(--cover-size);
+  aspect-ratio: 1;
+  scroll-snap-align: center;
+  
+  /* Create the named view timeline */
+  view-timeline-name: --li-in-and-out-of-view;
+  view-timeline-axis: inline;
+  
+  /* Apply the z-index animation */
+  animation: adjust-z-index linear both;
+  animation-timeline: --li-in-and-out-of-view;
+  perspective: 40em;
+}
+
+/* Image styling and animation */
+.cards li img {
+  width: 100%;
+  height: auto;
+  
+  /* Optional reflection */
+  -webkit-box-reflect: below 0.5em linear-gradient(transparent, rgba(0,0,0,0.25));
+  
+  /* Apply the rotation animation */
+  animation: rotate-cover linear both;
+  animation-timeline: --li-in-and-out-of-view;
+  
+  /* Prevent FOUC with polyfill */
+  transform: translateX(-100%) rotateY(-45deg);
+  transform-style: preserve-3d;
+  will-change: transform;
+  
+  position: relative;
+  user-select: none;
+}
+img {
+	display: inline-block;
+	margin: 25px;
+}
+div {
+	margin: 0 175px;
+}
